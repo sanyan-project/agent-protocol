@@ -3,7 +3,7 @@
 [中文](README.md) | [English](README_EN.md)
 
 [![CI](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![Python 3.10–3.12](https://img.shields.io/badge/Python-3.10--3.12-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![MIT License](https://img.shields.io/badge/License-MIT-E8D7B5.svg)](LICENSE)
 
 ![两条独立 Agent 路径经过审计门，汇入证据天平](docs/assets/repository-cover.jpg)
@@ -25,7 +25,7 @@ GateLedger 是一个面向“一个 Agent 执行、另一个角色审阅”的�
 
 ## 快速体验
 
-需要 Python 3.10 或更高版本，无第三方运行时依赖：
+需要 Python 3.10、3.11 或 3.12，无第三方运行时依赖：
 
 ```bash
 python health_check.py

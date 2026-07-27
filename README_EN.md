@@ -3,7 +3,7 @@
 [中文](README.md) | [English](README_EN.md)
 
 [![CI](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![Python 3.10–3.12](https://img.shields.io/badge/Python-3.10--3.12-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![MIT License](https://img.shields.io/badge/License-MIT-E8D7B5.svg)](LICENSE)
 
 ![Two independent agent paths pass through an audit gate and converge on an evidence scale](docs/assets/repository-cover.jpg)
@@ -29,7 +29,7 @@ with a fully synthetic public example.
 
 ## Quick start
 
-Python 3.10 or newer is required. There are no third-party runtime dependencies.
+Python 3.10, 3.11, or 3.12 is required. There are no third-party runtime dependencies.
 
 ```bash
 python health_check.py
