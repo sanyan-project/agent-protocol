@@ -1,85 +1,75 @@
-# Sanyan Agent Collaboration Protocol v1.0-alpha
+# ThreeYan Agent Collaboration Audit Protocol
 
-> Human-AI Agent collaboration engineering reference
-> **⚠️ alpha: mechanisms deployed, execution rate under validation.**
+[中文](README.md) | [English](README_EN.md)
 
-## Status
+> **v1.0-alpha · runnable reference · not production-ready**
 
-| Metric | Target | Actual | Gap |
-|:--|:--|:--|:--|
-| Self-audit ratio | ≤5:1 | 15:1 | 🔴 Pending |
-| Pending closure | >80% | ~11% | 🔴 Backlog |
-| OODA completion | >95% | Untracked | 🟡 New |
+This is a minimal protocol for workflows where one agent executes and another
+role reviews. It turns a few important rules into deterministic checks:
 
-**This document describes the target state under construction**, not current reality. Hard gates deployed 2026-05-29; execution metrics need time.
+- executor and reviewer must differ;
+- the record must contain Observe, Orient, Decide, Act, Reflect, and Persist in order;
+- every factual claim must cite a real, non-empty `file:line` inside the authorized workspace;
+- high-risk work must record human approval;
+- outcome and stop condition must be explicit;
+- one failed hard gate makes the audit verdict `FAIL`.
 
-## Team
+It does not claim autonomous self-evolution or prove that a reviewer is truly
+independent or correct. The current release is a deterministic protocol core
+with a fully synthetic public example.
 
-- **Sanyan Lead** (Human) — Final decision-maker. Threshold-based intervention.
-- **SiSi** (AI Agent) — Execution core. Code / Ops / Content / Decisions
-- **TianPing** (AI Agent) — Independent auditor. First-order audit + self-audit
-- **Jian** (AI Agent) — Cloud observer. Engine monitoring + concept discovery (WIP)
+## Quick start
 
-### Intervention Protocol
-
-| Trigger | Action |
-|:--|:--|
-| External audit 🔴 alert | Lead must intervene |
-| Quality score drops 2 weeks | Lead notified, optional intervention |
-| Major direction change | Lead must confirm |
-| Normal operations | Lead not involved; SiSi+TianPing auto-run |
-
-## Execution Gates (SiSi)
-
-### OODA State Machine
-Every task: [OODA:Observe]→[OODA:Orient]→[OODA:Decide]→[OODA:Act]→[OODA:Reflect]→[OODA:Persisted]
-
-### Sanyan 4-Step
-Essence → (Concept Match) → Simplest → Chain → Inverse
-
-### Guardrail Regex
-Code assertions must carry file:line. Auto-validated.
-
-### Reflection JSON
-Structured post-task reflection.
-
-## Audit Gates (TianPing)
-
-### ASE Audit System
-26+ audits. Each produces verdict + evidence + pending items.
-
-### Pre-audit Gate
-Mandatory read of audit_memory.json + error_patterns.json before each audit.
-
-### Self-Audit (Hard Gate)
-Every 5 ASE audits → forced self-audit. Ratio > 5:1 → alert.
-
-### External Perspective Simulator
-Every 50 rounds: switch to "stranger" perspective audit.
-
-## Observability
-
-### Quality Score
-SiSi 5-dim × TianPing 4-dim = composite health score.
-
-### Failure Ritual
-Fail → 5Why → pattern match → Guardrail update → TianPing confirm.
-
-### Dashboard (6 metrics)
-OODA rate · Guardrail rate · Reflection rate · Self-audit ratio · Memory rate · External audit rating.
-
-## Assets (12 files)
-
-guardrail_checker.py · external_auditor.py · meta_audit.py · health_check.py · error_patterns.json · quality_score.json · failure_ritual.json · memory_health.json · reflection_template.json · concept_driven.json · external_view_simulator.json · dashboard_v0.md
-
-## How to Use
+Python 3.10 or newer is required. There are no third-party runtime dependencies.
 
 ```bash
-python health_check.py  # One-click health check
+python health_check.py
 ```
 
-MIT License. Reference freely.
+The JSON report should contain `verdict: PASS` with all five hard gates passing.
 
-## Version
+Audit a specific record:
 
-v1.0-alpha · 2026-05-29 · Initial (mechanisms deployed, metrics pending)
+```bash
+python -m sanyan_protocol.cli audit \
+  --record examples/audit_record.json \
+  --root examples/workspace
+```
+
+## Install and test
+
+```bash
+python -m pip install -e .
+python -m unittest discover -s tests -v
+python scripts/validate_public_package.py
+```
+
+After installation:
+
+```bash
+sanyan-audit health
+```
+
+## What the gates prove
+
+| Gate | Deterministically checked | Not proven |
+|---|---|---|
+| State machine | Six stages are complete and ordered | Reasoning quality inside each stage |
+| Role separation | Normalized executor and reviewer identifiers differ | Independent models or contexts |
+| Citations | File is inside the root; line exists and is non-empty | Semantic entailment of the full claim |
+| Human authority | High-risk record declares human approval | Approver identity |
+| Closeout | Outcome and stop condition are recorded | Business success |
+
+See [PROTOCOL.md](PROTOCOL.md) for the data contract. [WHITEPAPER.md](WHITEPAPER.md)
+explains the design and clearly labels older numbers as an unverified historical
+snapshot.
+
+## Safety and scope
+
+Do not commit customer data, real chats, credentials, private repository paths,
+or internal audit logs. Public examples must be synthetic. Run sensitive audits
+locally in an authorized environment and never attach their inputs to public
+issues.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Licensed
+under the [MIT License](LICENSE).
