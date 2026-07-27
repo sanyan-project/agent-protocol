@@ -1,0 +1,24 @@
+{
+  "claims": [
+    {
+      "citation": "source.md:3",
+      "text": "The synthetic fixture declares a bounded local audit."
+    }
+  ],
+  "executor": "executor-demo",
+  "human_approved": false,
+  "outcome": "completed",
+  "reviewer": "reviewer-demo",
+  "risk": "low",
+  "schema_version": "1.0-alpha",
+  "stages": [
+    "observe",
+    "orient",
+    "decide",
+    "act",
+    "reflect",
+    "persist"
+  ],
+  "stop_condition": "Stop after the five deterministic gates are evaluated once.",
+  "task_id": "SYNTHETIC-AUDIT-001"
+}
