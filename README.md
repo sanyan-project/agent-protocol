@@ -2,7 +2,15 @@
 
 [中文](README.md) | [English](README_EN.md)
 
+[![CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MIT License](https://img.shields.io/badge/License-MIT-E8D7B5.svg)](LICENSE)
+
+![两条独立 Agent 路径经过审计门，汇入证据天平](docs/assets/repository-cover.jpg)
+
 > **v1.0-alpha · runnable reference · not production-ready**
+
+**把 Agent 协作中的角色分离、证据引用、人工授权和停止条件，变成会失败关闭的确定性硬门。**
 
 这是一个面向“一个 Agent 执行、另一个角色审阅”的最小协作协议。它把几条最重要的规则变成可运行检查，而不是只写在提示词里：
 
@@ -24,6 +32,12 @@ python health_check.py
 ```
 
 预期得到 JSON 报告，`verdict` 为 `PASS`，5 个硬门全部通过。
+
+关键结果如下：
+
+```json
+{"failed": 0, "passed": 5, "protocol_version": "1.0-alpha", "verdict": "PASS"}
+```
 
 也可以显式审计一份记录：
 
@@ -61,7 +75,7 @@ sanyan-audit health
 
 ## 当前证据
 
-本仓库提供一个完全合成的审计记录和一组回归测试，覆盖通过路径，以及缺阶段、同一角色自审、高风险无人工批准、路径穿越、绝对路径、未知文件、越界行和空白行等失败路径。CI 配置在 Python 3.10、3.11 和 3.12 上运行同一组检查。
+本仓库提供一个完全合成的审计记录和一组回归测试，覆盖通过路径，以及缺阶段、同一角色自审、高风险无人工批准、路径穿越、绝对路径、未知文件、越界行和空白行等失败路径。[GitHub CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml) 已在 Python 3.10、3.11 和 3.12 上通过同一组检查。
 
 ## 安全与范围
 
