@@ -1,8 +1,8 @@
-# ThreeYan Agent Collaboration Audit Protocol
+# GateLedger
 
 [中文](README.md) | [English](README_EN.md)
 
-[![CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml)
+[![CI](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![MIT License](https://img.shields.io/badge/License-MIT-E8D7B5.svg)](LICENSE)
 
@@ -12,8 +12,9 @@
 
 **Turn role separation, evidence citations, human authority, and stop conditions into deterministic gates that fail closed.**
 
-This is a minimal protocol for workflows where one agent executes and another
-role reviews. It turns a few important rules into deterministic checks:
+GateLedger is a runnable audit protocol for workflows where one agent executes
+and another role reviews. It reads a structured task record plus workspace
+evidence and turns these rules into deterministic, fail-closed checks:
 
 - executor and reviewer must differ;
 - the record must contain Observe, Orient, Decide, Act, Reflect, and Persist in order;
@@ -81,7 +82,7 @@ snapshot.
 The fully synthetic record and regression suite cover the passing path plus
 missing stages, same-role self-review, absent human approval, path traversal,
 absolute paths, unknown files, out-of-range citations, and blank lines.
-[GitHub CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml)
+[GitHub CI](https://github.com/sanyan-project/gate-ledger/actions/workflows/ci.yml)
 has passed the same checks on Python 3.10, 3.11, and 3.12.
 
 ## Safety and scope

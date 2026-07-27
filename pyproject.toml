@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sanyan-agent-protocol"
+name = "gate-ledger"
 version = "1.0.0a1"
-description = "Deterministic hard gates for executor-reviewer agent workflows"
+description = "Fail-closed audit gates for executor-reviewer agent workflows"
 readme = "README_EN.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
