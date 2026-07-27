@@ -12,6 +12,7 @@ README_EN.md
 SECURITY.md
 WHITEPAPER.md
 docs/DESIGN_LIMITS.md
+docs/assets/repository-cover.jpg
 examples/audit_record.json
 examples/workspace/source.md
 health_check.py

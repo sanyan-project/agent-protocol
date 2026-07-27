@@ -2,7 +2,15 @@
 
 [中文](README.md) | [English](README_EN.md)
 
+[![CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![MIT License](https://img.shields.io/badge/License-MIT-E8D7B5.svg)](LICENSE)
+
+![Two independent agent paths pass through an audit gate and converge on an evidence scale](docs/assets/repository-cover.jpg)
+
 > **v1.0-alpha · runnable reference · not production-ready**
+
+**Turn role separation, evidence citations, human authority, and stop conditions into deterministic gates that fail closed.**
 
 This is a minimal protocol for workflows where one agent executes and another
 role reviews. It turns a few important rules into deterministic checks:
@@ -27,6 +35,12 @@ python health_check.py
 ```
 
 The JSON report should contain `verdict: PASS` with all five hard gates passing.
+
+The key result is:
+
+```json
+{"failed": 0, "passed": 5, "protocol_version": "1.0-alpha", "verdict": "PASS"}
+```
 
 Audit a specific record:
 
@@ -63,6 +77,12 @@ sanyan-audit health
 See [PROTOCOL.md](PROTOCOL.md) for the data contract. [WHITEPAPER.md](WHITEPAPER.md)
 explains the design and clearly labels older numbers as an unverified historical
 snapshot.
+
+The fully synthetic record and regression suite cover the passing path plus
+missing stages, same-role self-review, absent human approval, path traversal,
+absolute paths, unknown files, out-of-range citations, and blank lines.
+[GitHub CI](https://github.com/sanyan-project/agent-protocol/actions/workflows/ci.yml)
+has passed the same checks on Python 3.10, 3.11, and 3.12.
 
 ## Safety and scope
 
